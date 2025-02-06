@@ -1,0 +1,41 @@
+{
+  "name": "chessai",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Chess demo website using voice agent.",
+  "license": "UNLICENSED",
+  "author": "vocal0.com",
+  "type": "module",
+  "scripts": {
+    "add": "npm run upgrade && npm run nuke && npm run lint && npm run sort && git add .",
+    "audit": "npx upgradeps",
+    "audit:verbose": "npx upgradeps -v",
+    "build": "npx vite build",
+    "clean": "npx rimraf dist && npx rimraf node_modules && npx rimraf package-lock.json",
+    "predev": "cd ../vocal0/modules/client && npm run prestart && cp dist/vocal0.min.js ../../../chessai/public/vocal0.min.js",
+    "dev": "npx vite",
+    "lint": "npx prettier --write . && npx standard --fix",
+    "nuke": "npm run clean && npm cache verify && npm install",
+    "preview": "npx vite preview",
+    "sort": "npx sort-package-json",
+    "upgrade": "npx upgradeps -u -f"
+  },
+  "dependencies": {
+    "bootstrap": "5.3.3",
+    "chess.js": "1.0.0",
+    "react": "19.0.0",
+    "react-chessboard": "4.7.2",
+    "react-dom": "19.0.0",
+    "react-router-dom": "7.1.5",
+    "styled-components": "6.1.15"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "4.3.4",
+    "prettier": "3.4.2",
+    "rimraf": "6.0.1",
+    "sort-package-json": "2.14.0",
+    "standard": "17.1.2",
+    "upgradeps": "2.0.7",
+    "vite": "6.1.0"
+  }
+}
