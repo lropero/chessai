@@ -13,7 +13,7 @@ const Home = () => {
     window.Vocal0.on('connect', () => {
       setTimeout(() => {
         const availableMoves = game.current.moves()
-        window.Vocal0.dispatch('message', { type: 'availableMoves', payload: { availableMoves } })
+        window.Vocal0.informAgent({ availableMoves })
       }, 500)
     })
     window.Vocal0.on('move', payload => {
@@ -24,7 +24,7 @@ const Home = () => {
         makeMove(availableMoves[Math.floor(Math.random() * availableMoves.length)])
         setTimeout(() => {
           const availableMoves = game.current.moves()
-          window.Vocal0.dispatch('message', { type: 'availableMoves', payload: { availableMoves } })
+          window.Vocal0.informAgent({ availableMoves })
         }, 500)
       }, 1000)
     })
