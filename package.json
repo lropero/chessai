@@ -12,7 +12,7 @@
     "audit:verbose": "npx upgradeps -v",
     "build": "npx vite build",
     "clean": "npx rimraf dist && npx rimraf node_modules && npx rimraf package-lock.json",
-    "predev": "cd ../vocal0/modules/client && npm run prestart && cp dist/vocal0.min.js ../../../chessai/public/vocal0.min.js",
+    "predev": "cd ../vocal0/modules/client && npm run prestart && cp dist/vocal0.min.js ../../../chessai/public",
     "dev": "npx vite",
     "lint": "npx prettier --write . && npx standard --fix",
     "nuke": "npm run clean && npm cache verify && npm install",
@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "4.3.4",
-    "prettier": "3.5.0",
+    "prettier": "3.5.1",
     "rimraf": "6.0.1",
     "sort-package-json": "2.14.0",
     "standard": "17.1.2",

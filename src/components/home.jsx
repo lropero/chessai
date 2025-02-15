@@ -9,27 +9,36 @@ const Home = () => {
   const [fen, setFen] = useState(game.current.fen())
 
   useEffect(() => {
-    if (!window.Vocal0) return
-    window.Vocal0.on('connect', () => {
-      setTimeout(() => {
-        const availableMoves = game.current.moves()
-        window.Vocal0.informAgent({ availableMoves })
-      }, 500)
-    })
-    window.Vocal0.on('move', payload => {
-      const { move } = payload
-      makeMove(move)
-      setTimeout(() => {
-        const availableMoves = game.current.moves()
-        makeMove(availableMoves[Math.floor(Math.random() * availableMoves.length)])
+    const loadVocal0 = () => {
+      window.Vocal0.on('connect', () => {
         setTimeout(() => {
           const availableMoves = game.current.moves()
           window.Vocal0.informAgent({ availableMoves })
         }, 500)
-      }, 1000)
-    })
-    return () => window.Vocal0.off()
-  }, [window.Vocal0])
+      })
+      window.Vocal0.on('move', payload => {
+        const { move } = payload
+        makeMove(move)
+        setTimeout(() => {
+          const availableMoves = game.current.moves()
+          makeMove(availableMoves[Math.floor(Math.random() * availableMoves.length)])
+          setTimeout(() => {
+            const availableMoves = game.current.moves()
+            window.Vocal0.informAgent({ availableMoves })
+          }, 500)
+        }, 1000)
+      })
+    }
+    if (window.Vocal0) {
+      loadVocal0()
+    } else {
+      window.addEventListener('vocal0Loaded', loadVocal0)
+    }
+    return () => {
+      window.removeEventListener('vocal0Loaded', loadVocal0)
+      window.Vocal0.off()
+    }
+  }, [])
 
   const makeMove = move => {
     game.current.move(move)

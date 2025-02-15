@@ -6,5 +6,5 @@ Check it out [here](https://vocal0-chessai.netlify.app).
 
 ### Requires
 
-- Node v22.13.1
+- Node v22.14.0
 - npm v11.1.0
