@@ -28,6 +28,11 @@ const Home = () => {
           }, 500)
         }, 1000)
       })
+      window.Vocal0.on('takeBack', () => {
+        takeBack()
+        const availableMoves = game.current.moves()
+        window.Vocal0.informAgent({ availableMoves })
+      })
     }
     if (window.Vocal0) {
       loadVocal0()
@@ -42,6 +47,12 @@ const Home = () => {
 
   const makeMove = move => {
     game.current.move(move)
+    setFen(game.current.fen())
+  }
+
+  const takeBack = () => {
+    game.current.undo()
+    game.current.undo()
     setFen(game.current.fen())
   }
 
