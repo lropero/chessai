@@ -93,7 +93,7 @@ const Home = () => {
         </Demo>
       </Container>
       <Brain>
-        <span>Agent brain settings</span>
+        <span>Agent brain</span>
         <br />
         <br />
         {`You are a chess assistant specializing in helping users make moves during a chess game. Your main role is to accurately convert spoken or written moves into precise algebraic notation (always in English) while maintaining smooth and minimal communication with the user.
@@ -109,10 +109,10 @@ INSTRUCTIONS
   - Listen carefully to the user's spoken or written move.
   - Convert the move into standard algebraic notation (always in English).
 4. Executing Moves
-  - Send the move to the system by executing the tool function "message_client" with parameters: { "type": "move", "payload": { "move": "<move in algebraic notation>" } }
+  - Send the move to the system by executing the tool function "message_client" with parameters: { eventName: "move", payload: { move: "<move in algebraic notation>" } }
   - Confirm the move by repeating it back to the user in their language.
 5. Handling Takebacks
-  - If the user requests to undo a move, execute the tool function "message_client" with parameter: { "type": "takeBack" }
+  - If the user requests to undo a move, execute the tool function "message_client" with parameter: { eventName: "takeBack" }
 
 KEY BEHAVIORS:
 1. Accuracy & Consistency
@@ -130,7 +130,7 @@ KEY BEHAVIORS:
 EXAMPLE WORKFLOW:
 1. User says "Knight f3"
 2. Convert "Knight f3" to algebraic notation → "Nf3"
-3. Execute "message_client" with parameter: { "type": "move", "payload": { "move": "Nf3" } }
+3. Execute "message_client" with parameter: { eventName: "move", payload: { move: "Nf3" } }
 3. Say: "Knight f3" (repeating the move in the user’s language)
 4. Wait for the next move.`}
       </Brain>
@@ -154,27 +154,29 @@ const Background = styled('div')`
 `
 
 const Board = styled('div')`
-  background-color: #333;
+  background-color: #222;
   border-radius: 8px;
   height: 380px;
+  opacity: 0.9;
   padding: 12px;
   width: 380px;
 `
 
 const Brain = styled('pre')`
-  background-color: #333;
+  background-color: #222;
   border-radius: 8px;
   color: orange;
-  font-size: 0.6em;
+  font-size: 0.6rem;
   height: 200px;
   margin-top: 12px;
+  opacity: 0.9;
   overflow-y: auto;
   padding: 10px 12px;
   white-space: pre-wrap;
   width: 672px;
 
   & span {
-    color: white;
+    color: #d1c3b7;
     text-transform: uppercase;
   }
 `
@@ -184,11 +186,11 @@ const Container = styled('div')`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-top: 44px;
+  padding-top: 42px;
 
   & #vocal0 {
     display: ${({ $vocal0Loaded }) => ($vocal0Loaded ? 'block' : 'none')};
-    margin-top: -44px;
+    margin-top: -42px;
   }
 `
 
@@ -199,16 +201,17 @@ const Demo = styled('div')`
 `
 
 const Events = styled('div')`
-  background-color: #333;
+  background-color: #222;
   border-radius: 8px;
-  color: white;
+  color: #d1c3b7;
   height: 380px;
+  opacity: 0.9;
   overflow-y: auto;
   padding: 8px 12px;
   width: 280px;
 
   & ul {
-    font-size: 0.7em;
+    font-size: 0.7rem;
     list-style: disc;
     margin-left: 12px;
     padding: 0;

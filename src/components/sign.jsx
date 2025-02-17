@@ -2,7 +2,7 @@ import React from 'react'
 
 const Sign = () => {
   const hover = {
-    color: '#333'
+    color: '#da3435'
   }
 
   const style = {
