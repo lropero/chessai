@@ -155,7 +155,7 @@ const Background = styled('div')`
 
 const Board = styled('div')`
   background-color: #222;
-  border-radius: 8px;
+  border-radius: 20px;
   height: 380px;
   opacity: 0.9;
   padding: 12px;
@@ -164,9 +164,9 @@ const Board = styled('div')`
 
 const Brain = styled('pre')`
   background-color: #222;
-  border-radius: 8px;
+  border-radius: 20px;
   color: orange;
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   height: 200px;
   margin-top: 12px;
   opacity: 0.9;
@@ -202,7 +202,7 @@ const Demo = styled('div')`
 
 const Events = styled('div')`
   background-color: #222;
-  border-radius: 8px;
+  border-radius: 20px;
   color: #d1c3b7;
   height: 380px;
   opacity: 0.9;
