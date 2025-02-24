@@ -172,6 +172,7 @@ const Brain = styled('pre')`
   opacity: 0.9;
   overflow-y: auto;
   padding: 10px 12px;
+  scrollbar-width: none;
   white-space: pre-wrap;
   width: 672px;
 
