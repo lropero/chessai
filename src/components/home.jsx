@@ -13,7 +13,7 @@ const Home = () => {
   const [vocal0Loaded, setVocal0Loaded] = useState(false)
 
   useEffect(() => {
-    const loadVocal0 = () => {
+    const listenVocal0 = () => {
       window.Vocal0.on('connect', () => {
         setEvents(events => [...events, 'Agent connected'])
         setTimeout(() => {
@@ -49,9 +49,9 @@ const Home = () => {
       setEvents(events => [...events, 'Vocal0 agent loaded'])
       setVocal0Loaded(true)
     }
-    window.addEventListener('vocal0Loaded', loadVocal0)
+    window.addEventListener('vocal0Loaded', listenVocal0)
     return () => {
-      window.removeEventListener('vocal0Loaded', loadVocal0)
+      window.removeEventListener('vocal0Loaded', listenVocal0)
       window.Vocal0.off()
     }
   }, [])
